@@ -27,7 +27,7 @@ ReactDOM.render(
   <HashRouter>
     <MaterialUIControllerProvider>
       <AuthProvider>
-          <Favicon url='/favicon.png'/>
+          <Favicon url='/favicon3.png'/>
         <App />
       </AuthProvider>
     </MaterialUIControllerProvider>

@@ -50,7 +50,7 @@ function Basic() {
     <BasicLayout image={bgImage}>
       <Footer light />
       <Card style={{backgroundColor: 'transparent', boxShadow: 'none'}}>
-        <img src={bgImage2}/>
+        <img style={{padding: '60px'}} src={bgImage2}/>
       </Card>
       <Card>
         <MDBox
@@ -87,18 +87,6 @@ function Basic() {
                   {mensagens}
               </MDTypography>
             </MDBox>
-            {/*<MDBox display="flex" alignItems="center" ml={-1}>*/}
-            {/*  <Switch checked={rememberMe} onChange={handleSetRememberMe} />*/}
-            {/*  <MDTypography*/}
-            {/*    variant="button"*/}
-            {/*    fontWeight="regular"*/}
-            {/*    color="text"*/}
-            {/*    onClick={handleSetRememberMe}*/}
-            {/*    sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}*/}
-            {/*  >*/}
-            {/*    &nbsp;&nbsp;Lembrar de mim*/}
-            {/*  </MDTypography>*/}
-            {/*</MDBox>*/}
             <MDBox mt={4} mb={1}>
               <MDButton variant="gradient" color="dark" fullWidth
                         onClick={() => handleLogin({username, password})}>
