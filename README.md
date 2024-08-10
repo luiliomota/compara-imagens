@@ -2,7 +2,7 @@
 
 app web para comparação de imagens aplicado a um tratamento de paciente
 
-https://adeusvarizes.alf5.com.br
+https://comparaimagens.alf5.com.br
 
 ## Tecnologias:
 #### HTML
@@ -16,4 +16,5 @@ https://adeusvarizes.alf5.com.br
 #### REACT
 ![imagem](https://github.com/user-attachments/assets/a8eae16c-5c61-4f5b-9d77-9c7b7f76a101)
 
-![imagem](https://github.com/user-attachments/assets/2e6c426c-bb3a-46f0-a5a2-d19d05621c92)
+![imagem](https://github.com/user-attachments/assets/656d1b97-8232-41fc-a710-e95b3e44906c)
+![imagem](https://github.com/user-attachments/assets/55237586-7a25-43c9-a59e-ec22b0c029cd)
