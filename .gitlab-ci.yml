@@ -26,6 +26,8 @@ package_deploy_image:
   stage: deploy
   script:
     - echo "Criando a imagem Docker..."
+    - pwd
+    - ls -la
     - docker build . -t "$DOCKERHUB_IMAGE_DEV"
     - echo "Mostrando lista de images..."
     - docker images
