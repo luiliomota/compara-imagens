@@ -11,6 +11,7 @@ build_job:
   image: openjdk:17
   stage: build
   script:
+    - which apt-get yum dnf pacman zypper
     - apt-get update
     - apt-get install maven
     - mvn --version
