@@ -14,7 +14,7 @@ install_dependency:
   script:
     - apk update
     - apk add npm
-    - apk maven
+    - apk add maven
     - npm --version
     - mvn --version
     - java --version
