@@ -4,20 +4,25 @@ services:
   - docker:dind
 
 stages:
-  - build
-  - deploy
+  - dependency-build
+  - package-deploy
 
-build_job:
+install_dependency-build:
   image: amazoncorretto:17-alpine-jdk
-  stage: build
+  stage: dependency-build
   script:
     - apk update
+    - apk add npm 
     - apk add maven
-    - echo "Configurando permissões..."
-    - mvn --version
-    - chmod +x ./mvnw
-    - echo "Iniciando o build..."
-    - ./mvnw clean package -DskipTests
+    - cd frontend/
+    - echo "Atualização de pacotes npm..."
+    - npm install
+    - echo "Iniciando Build do FrontEnd..."
+    - npm run build
+    - cd ../
+    - echo "Iniciando o build do BackEnd..."
+    - mvn clean package -DskipTests
+
 
   artifacts:
     paths:
@@ -25,11 +30,9 @@ build_job:
   only:
     - main
 
-package_deploy_image:
-  stage: deploy
+package-deploy:
+  stage: package-deploy
   script:
-    - echo "$DOCKERHUB_IMAGE_PROD"
-    - echo "$DOCKERHUB_IMAGE_DEV"
     - echo "Criando a imagem Docker..."
     - docker build --platform linux/arm64 -t "$DOCKERHUB_IMAGE_PROD" .
     - echo "Mostrando lista de images..."
