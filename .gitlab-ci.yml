@@ -4,25 +4,33 @@ services:
   - docker:dind
 
 stages:
+  - dependency
   - build
   - deploy
 
-build_job:
-  image: openjdk:17-slim
-  stage: build
+install_dependency:
+  image: amazoncorreto:17-alpine-jdk
+  stage: dependency
   script:
-    - apt-get update -y
-    - apt-get install npm -y
-    - apt-get install maven -y
+    - apk update
+    - apk add npm
+    - apk maven
+    - npm --version
     - mvn --version
     - java --version
-    - npm --version
+
+  only:
+    - develop
+
+build_package_job:
+  image: amazoncorretto:17-alpine-jdk
+  stage: build
+  script:
     - cd frontend/
-    - pwd
-    - npm install -y
-    - npm run build -y
-    - cd ../
-    - pwd
+    - echo "Atualização de pacotes npm..."
+    - npm install
+    - echo "Build do FrontEnd..."
+    - npm run build
     - echo "Iniciando o build..."
     - mvn clean package -DskipTests
 
