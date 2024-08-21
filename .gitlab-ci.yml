@@ -11,7 +11,8 @@ build_job:
   image: amazoncorretto:17-alpine-jdk
   stage: build
   script:
-    - npm install maven
+    - apk update
+    - add maven
     - echo "Configurando permissões..."
     - mvn --version
     - chmod +x ./mvnw
