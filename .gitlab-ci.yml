@@ -12,9 +12,17 @@ build_job:
   stage: build
   script:
     - apt-get update -y
+    - apt-get install npm -y
     - apt-get install maven -y
     - mvn --version
     - java --version
+    - npm --version
+    - cd frontend/
+    - pwd
+    - npm install -y
+    - npm run build -y
+    - cd ../
+    - pwd
     - echo "Iniciando o build..."
     - mvn clean package -DskipTests
 

@@ -66,8 +66,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
+            <version>24.1.0</version>
         </dependency>
 <!--		<dependency>-->
 <!--			<groupId>org.apache.maven.plugins</groupId>-->
@@ -110,3 +109,4 @@
 	</build>
 
 </project>
+
