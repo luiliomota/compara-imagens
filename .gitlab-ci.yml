@@ -9,6 +9,7 @@ stages:
   - deploy
 
 build_job:
+  image: amazoncorretto:17-alpine-jdk
   stage: build
   script:
     - echo "Configurando permissões..."
@@ -22,7 +23,6 @@ build_job:
     - main
 
 package_image:
-  image: amazoncorretto:17-alpine-jdk
   stage: package
   script:
     - echo "Criando a imagem Docker..."
