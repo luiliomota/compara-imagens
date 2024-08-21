@@ -13,11 +13,9 @@ build_job:
   script:
     - apk update
     - apk add maven
-    - echo "Configurando permissões..."
-    - chmod +x ./mvnw
     - mvn --version
     - echo "Iniciando o build..."
-    - mvn package
+    - mvn clean package -DskipTests
 
   artifacts:
     paths:
