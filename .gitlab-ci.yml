@@ -5,7 +5,6 @@ services:
 
 stages:
   - build
-  - package
   - deploy
 
 build_job:
@@ -22,18 +21,11 @@ build_job:
   only:
     - main
 
-package_image:
-  stage: package
+package_deploy_image:
+  stage: deploy
   script:
     - echo "Criando a imagem Docker..."
     - docker build --platform linux/arm64 -t "$DOCKERHUB_IMAGE" .
-    - docker images
-  only:
-    - main
-
-deploy_job:
-  stage: deploy
-  script:
     - echo "Mostrando lista de images..."
     - docker images
     - echo "Fazendo o deploy para o Docker Hub..."
