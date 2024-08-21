@@ -11,7 +11,11 @@ build_job:
   image: amazoncorretto:17-alpine-jdk
   stage: build
   script:
-    - mvn package
+    - echo "Configurando permissões..."
+    - chmod +x ./mvnw
+    - echo "Iniciando o build..."
+    - ./mvnw clean package -DskipTests
+
   artifacts:
     paths:
       - target/*.jar
