@@ -4,28 +4,16 @@ services:
   - docker:dind
 
 stages:
-  - dependency
-  - build
-  - deploy
+  - dependency-build
+  - package-deploy
 
-install_dependency:
+install_dependency-build:
   image: amazoncorretto:17-alpine-jdk
-  stage: dependency
+  stage: dependency-build
   script:
     - apk update
-    - apk add npm
+    - apk add npm 
     - apk add maven
-    - npm --version
-    - mvn --version
-    - java --version
-
-  only:
-    - develop
-
-build_job:
-  image: amazoncorretto:17-alpine-jdk
-  stage: build
-  script:
     - cd frontend/
     - echo "Atualização de pacotes npm..."
     - npm install
@@ -41,7 +29,7 @@ build_job:
     - develop
 
 package_deploy_image:
-  stage: deploy
+  stage: package-deploy
   script:
     - echo "Criando a imagem Docker..."
     - docker build . -t "$DOCKERHUB_IMAGE_DEV"
