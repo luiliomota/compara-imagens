@@ -11,8 +11,8 @@ build_job:
   image: openjdk:17-slim
   stage: build
   script:
-    - apt-get update
-    - apt-get install maven
+    - apt-get update -y
+    - apt-get install maven -y
     - mvn --version
     - java --version
     - echo "Iniciando o build..."
