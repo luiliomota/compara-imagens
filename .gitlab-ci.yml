@@ -8,7 +8,7 @@ stages:
   - deploy
 
 build_job:
-  image: openjdk:17.0.2-oracle
+  image: openjdk:17
   stage: build
   script:
     - apt-get update
