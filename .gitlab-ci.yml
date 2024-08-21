@@ -8,6 +8,8 @@ stages:
 build_job:
   stage: build
   script:
+    - echo "Configurando permissões..."
+    - chmod +x ./mvnw
     - echo "Iniciando o build..."
     - ./mvnw clean package -DskipTests
   artifacts:
