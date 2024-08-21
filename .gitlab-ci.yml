@@ -1,4 +1,7 @@
-image: amazoncorretto:17-alpine-jdk
+image: docker:20.10.16-dind
+
+services:
+  - docker:dind
 
 stages:
   - build
@@ -19,6 +22,7 @@ build_job:
     - main
 
 package_image:
+  image: amazoncorretto:17-alpine-jdk
   stage: package
   script:
     - echo "Criando a imagem Docker..."
