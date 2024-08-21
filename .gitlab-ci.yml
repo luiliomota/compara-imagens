@@ -9,7 +9,7 @@ stages:
   - deploy
 
 install_dependency:
-  image: amazoncorreto:17-alpine-jdk
+  image: amazoncorretto:17-alpine-jdk
   stage: dependency
   script:
     - apk update
@@ -22,16 +22,16 @@ install_dependency:
   only:
     - develop
 
-build_package_job:
+build_job:
   image: amazoncorretto:17-alpine-jdk
   stage: build
   script:
     - cd frontend/
     - echo "Atualização de pacotes npm..."
     - npm install
-    - echo "Build do FrontEnd..."
+    - echo "Iniciando Build do FrontEnd..."
     - npm run build
-    - echo "Iniciando o build..."
+    - echo "Iniciando o build do BackEnd..."
     - mvn clean package -DskipTests
 
   artifacts:
