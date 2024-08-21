@@ -29,7 +29,7 @@ install_dependency-build:
   only:
     - develop
 
-package_deploy_image:
+package-deploy:
   stage: package-deploy
   script:
     - echo "Criando a imagem Docker..."
