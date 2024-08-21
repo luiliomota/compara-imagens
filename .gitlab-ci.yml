@@ -11,8 +11,8 @@ build_job:
   image: openjdk:17
   stage: build
   script:
-    - apt-get update
-    - apt-get install maven
+    - apk update
+    - apk add maven
     - mvn --version
     - java --version
     - echo "Iniciando o build..."
