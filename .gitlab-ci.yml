@@ -25,7 +25,8 @@ build_job:
 package_deploy_image:
   stage: deploy
   script:
-    - echo "$DOCKERHUB_IMAGE"
+    - echo "$DOCKERHUB_IMAGE_PROD"
+    - echo "$DOCKERHUB_IMAGE_DEV"
     - echo "Criando a imagem Docker..."
     - docker build --platform linux/arm64 -t "$DOCKERHUB_IMAGE_PROD" .
     - echo "Mostrando lista de images..."
