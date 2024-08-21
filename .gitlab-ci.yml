@@ -25,10 +25,6 @@ build_job:
 package_deploy_image:
   stage: deploy
   script:
-    - echo "VARIÁVEIS:"
-    - echo "$DOCKERHUB_IMAGE_DEV"
-    - echo "$DOCKERHUB_IMAGE_PROD"
-    - echo "$DOCKERHUB_USERNAME"
     - echo "Criando a imagem Docker..."
     - docker build . -t "$DOCKERHUB_IMAGE_DEV"
     - echo "Mostrando lista de images..."
