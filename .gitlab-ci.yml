@@ -34,6 +34,8 @@ package_image:
 deploy_job:
   stage: deploy
   script:
+    - echo "Mostrando lista de images..."
+    - docker images
     - echo "Fazendo o deploy para o Docker Hub..."
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker push "$DOCKERHUB_IMAGE"
