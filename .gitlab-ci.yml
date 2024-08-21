@@ -13,7 +13,6 @@ build_job:
   script:
     - pwd
     - ls -la
-    - ls -la target/
     - echo "Configurando permissões..."
     - chmod +x ./mvnw
     - echo "Iniciando o build..."
