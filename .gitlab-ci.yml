@@ -8,11 +8,11 @@ stages:
   - deploy
 
 build_job:
-  image: amazoncorretto:17-alpine-jdk
+  image: openjdk:17.0.2-oracle
   stage: build
   script:
-    - apk update
-    - apk add maven
+    - apt-get update
+    - apt-get install maven
     - mvn --version
     - java --version
     - echo "Iniciando o build..."
