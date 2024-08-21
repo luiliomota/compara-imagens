@@ -1,0 +1,34 @@
+image: amazoncorretto:17-alpine-jdk
+
+stages:
+  - build
+  - package
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - echo "Iniciando o build..."
+    - ./mvnw clean package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+  only:
+    - main
+
+package_image:
+  stage: package
+  script:
+    - echo "Criando a imagem Docker..."
+    - docker build --platform linux/arm64 -t "$DOCKERHUB_IMAGE" .
+  only:
+    - main
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Fazendo o deploy para o Docker Hub..."
+    - echo "$DOCKERHUB_PASSWORD | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    - docker push "$DOCKERHUB_IMAGE"
+  only:
+    - main
