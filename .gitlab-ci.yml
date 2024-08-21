@@ -19,6 +19,7 @@ install_dependency-build:
     - npm install
     - echo "Iniciando Build do FrontEnd..."
     - npm run build
+    - cd ../
     - echo "Iniciando o build do BackEnd..."
     - mvn clean package -DskipTests
 
