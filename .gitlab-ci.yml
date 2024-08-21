@@ -16,17 +16,17 @@ build_job:
     paths:
       - target/*.jar
   only:
-    - main
+    - develop
 
 package_deploy_image:
   stage: deploy
   script:
     - echo "Criando a imagem Docker..."
-    - docker build --platform linux/arm64 -t "$DOCKERHUB_IMAGE" .
+    - docker build -t "$DOCKERHUB_IMAGE" .
     - echo "Mostrando lista de images..."
     - docker images
     - echo "Fazendo o deploy para o Docker Hub..."
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker push "$DOCKERHUB_IMAGE"
   only:
-    - main
+    - develop
