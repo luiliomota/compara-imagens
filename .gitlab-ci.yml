@@ -11,7 +11,9 @@ build_job:
   image: amazoncorretto:17-alpine-jdk
   stage: build
   script:
+    - npm install maven
     - echo "Configurando permissões..."
+    - mvn --version
     - chmod +x ./mvnw
     - echo "Iniciando o build..."
     - ./mvnw clean package -DskipTests
