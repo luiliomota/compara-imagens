@@ -27,6 +27,7 @@ package_image:
   script:
     - echo "Criando a imagem Docker..."
     - docker build --platform linux/arm64 -t "$DOCKERHUB_IMAGE" .
+    - docker images
   only:
     - main
 
