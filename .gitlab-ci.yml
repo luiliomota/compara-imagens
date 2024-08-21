@@ -14,6 +14,7 @@ build_job:
     - apk update
     - apk add maven
     - mvn --version
+    - java --version
     - echo "Iniciando o build..."
     - mvn clean package -DskipTests
 
