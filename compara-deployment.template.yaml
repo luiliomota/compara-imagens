@@ -14,15 +14,15 @@ spec:
     spec:
       containers:
       - name: comparakube
-        image: ${DOCKERHUB_IMAGE_DEV} # Image that will be used to containers in the cluster
+        image: ${DOCKERHUB_IMAGE_PROD} # Image that will be used to containers in the cluster
         imagePullPolicy: Always
         env:
         - name: HOST_DB
-          value: ${HOST_DB_DEV}
+          value: ${HOST_DB_PROD}
         - name: USERNAME_DB
-          value: ${USERNAME_DB_DEV}
+          value: ${USERNAME_DB_PROD}
         - name: PASSWORD_DB
-          value: ${PASSWORD_DB_DEV}
+          value: ${PASSWORD_DB_PROD}
         ports:
         - containerPort: 8082 # The port that the container is running on in the cluster
 ---
