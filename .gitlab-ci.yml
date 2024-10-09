@@ -32,6 +32,8 @@ install_dependency-build:
 package-deploy:
   stage: package-deploy
   script:
+    - apk update
+    - apk add --no-cache gettext curl
     - echo "Criando a imagem Docker..."
     - docker build . -t "$DOCKERHUB_IMAGE_DEV"
     - echo "Mostrando lista de images..."
@@ -39,5 +41,14 @@ package-deploy:
     - echo "Fazendo o deploy para o Docker Hub..."
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - docker push "$DOCKERHUB_IMAGE_DEV"
+  # Deploy do kubernetes
+    - echo "Instalando kubectl..."
+    - curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/am>
+    - chmod +x ./kubectl
+    - mv ./kubectl /usr/local/bin/kubectl
+    - mkdir -p ~/.kube && echo "$KUBECONFIG_CONTENT" > ~/.kube/config  # Configura o KUBECONFIG
+    - kubectl config use-context luiliomota/compara-imagens:kubedell
+    - envsubst < compara-deployment.template.yaml > compara-deployment.yaml
+    - kubectl apply -f compara-deployment.yaml
   only:
     - develop
