@@ -47,7 +47,7 @@ package-deploy:
     - chmod +x ./kubectl
     - mv ./kubectl /usr/local/bin/kubectl
     - mkdir -p ~/.kube && echo "$KUBECONFIG_CONTENT" > ~/.kube/config  # Configura o KUBECONFIG
-    - kubectl config use-context luiliomota/compara-imagens:kubedell
+    - kubectl config use-context luiliomota/compara-imagens:kubecompara-dev
     - envsubst < compara-deployment.template.yaml > compara-deployment.yaml
     - kubectl apply -f compara-deployment.yaml
   only:
