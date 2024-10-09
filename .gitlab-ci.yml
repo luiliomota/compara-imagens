@@ -44,7 +44,7 @@ package-deploy:
     - docker push "$DOCKERHUB_IMAGE_PROD"
    # Deploy to Kubernetes
     - echo "Instalando kubectl..."
-    - curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/am>
+    - curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"  # Baixa o kubectl
     - chmod +x ./kubectl
     - mv ./kubectl /usr/local/bin/kubectl
     - mkdir -p ~/.kube && echo "$KUBECONFIG_CONTENT" > ~/.kube/config  # Configura o KUBECONFIG
